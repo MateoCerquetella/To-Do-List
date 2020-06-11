@@ -15,8 +15,7 @@ import { UserI } from '../../models/user';
 })
 export class LoginComponent implements OnInit {
   frmLogin: FormGroup;
-  // frmLoginRegister: FormGroup;
-  frmLoginComplete: UserI;
+  userModel: UserI;
   errorMessage: String;
   error = false;
 
@@ -40,21 +39,14 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.frmLoginComplete = {
+    this.userModel = {
       username: this.frmLogin.get('username').value,
       email: null,
       password: this.frmLogin.get('password').value
     };
-    this.authService.login(this.frmLoginComplete).subscribe(
+
+    this.authService.login(this.userModel).subscribe(
       (res) => {
-        // Si elige la opcion Recordame
-        /*if (this.frmLogin.get('recordame').value) {
-            localStorage.removeItem('EXPIRES_IN');
-        }*/
-        // TODO: Pasarlo por servicio
-        sessionStorage.setItem('Nombre', res.nombre);
-        sessionStorage.setItem('Apellido', res.apellido);
-        this.error = false;
         this.router.navigateByUrl('layout/dashboard');
       },
       (err) => {
@@ -64,7 +56,6 @@ export class LoginComponent implements OnInit {
         this.frmLogin.setValue({
           username: this.frmLogin.get('username').value,
           password: '', // Pongo la password vacia
-          recordame: this.frmLogin.get('recordame').value,
         });
       }
     );
