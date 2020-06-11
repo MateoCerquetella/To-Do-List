@@ -8,7 +8,7 @@
             <div class="card-body">
               <div class="row">
                 <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">Pedidos totales</h5>
+                  <h5 class="card-title text-uppercase text-muted mb-0">Tareas totales</h5>
                   <span class="h2 font-weight-bold mb-0"></span>
                 </div>
                 <div class="col-auto">
@@ -29,7 +29,7 @@
             <div class="card-body">
               <div class="row">
                 <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">Proxima entrega</h5>
+                  <h5 class="card-title text-uppercase text-muted mb-0">Proxima tarea</h5>
                   <span class="h2 font-weight-bold mb-0"></span>
                 </div>
                 <div class="col-auto">
@@ -40,7 +40,7 @@
               </div>
               <p class="mt-3 mb-0 text-muted text-sm">
                 <span class="text-muted mr-2"><i class="far fa-calendar"></i></span>
-                <span class="text-nowrap">Para el cliente: </span>
+                <span class="text-nowrap">Para la fecha de: </span>
                 <span class="h4 font-weight-bolder"></span>
               </p>
             </div>
@@ -51,7 +51,7 @@
             <div class="card-body">
               <div class="row">
                 <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">Articulo + vendido</h5>
+                  <h5 class="card-title text-uppercase text-muted mb-0">Tareas por hacer</h5>
                   <span class="h2 font-weight-bold mb-0"></span>
                 </div>
                 <div class="col-auto">
@@ -73,7 +73,7 @@
             <div class="card-body">
               <div class="row">
                 <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">Cliente + vendido</h5>
+                  <h5 class="card-title text-uppercase text-muted mb-0">Tareas completadas</h5>
                   <span class="h2 font-weight-bold mb-0"></span>
                 </div>
                 <div class="col-auto">
@@ -101,231 +101,81 @@
         <div class="card-header bg-white border-0">
           <h3 class="mb-0">Tareas</h3>
           <div class="form-group">
-            <input class="form-control form-control-alternative mt-3" placeholder="Agregar una nueva tarea..." type="text"></div>
+            <input class="form-control form-control-alternative mt-3" placeholder="Tarea nueva..."
+              type="text"></div>
         </div>
         <table class="table align-items-center table-flush">
           <thead class="thead-light">
+            <th>Por Hacer</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
           </thead>
           <tbody>
             <tr>
-              <th scope="row">
-                <input type="checkbox">
-              </th>
-              <td> $2,500 USD </td>
-              <td><span class="badge badge-dot mr-4"><i class="bg-warning"></i> pending </span></td>
               <td>
-                <div class="avatar-group"><a class="avatar avatar-sm" data-original-title="Ryan Tompson"
-                    data-toggle="tooltip" href="javascript:void(0)"><img alt="Image placeholder" class="rounded-circle"
-                      src="assets/img/theme/team-1-800x800.jpg"></a><a class="avatar avatar-sm"
-                    data-original-title="Romina Hadid" data-toggle="tooltip" href="javascript:void(0)"><img
-                      alt="Image placeholder" class="rounded-circle" src="assets/img/theme/team-2-800x800.jpg"></a><a
-                    class="avatar avatar-sm" data-original-title="Alexander Smith" data-toggle="tooltip"
-                    href="javascript:void(0)"><img alt="Image placeholder" class="rounded-circle"
-                      src="assets/img/theme/team-3-800x800.jpg"></a><a class="avatar avatar-sm"
-                    data-original-title="Jessica Doe" data-toggle="tooltip" href="javascript:void(0)"><img
-                      alt="Image placeholder" class="rounded-circle" src="assets/img/theme/team-4-800x800.jpg"></a>
-                </div>
+                <mat-checkbox></mat-checkbox>
               </td>
-              <td>
-                <div class="d-flex align-items-center"><span class="mr-2">60%</span>
-                  <div>
-                    <div class="progress">
-                      <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" class="progress-bar bg-warning"
-                        role="progressbar" style="width: 60%;"></div>
-                    </div>
-                  </div>
-                </div>
-              </td>
+              <td> Reclamarle al banco los dolares que no me dió </td>
+              <td> 24/6/2020 a las 16:40:00 hs</td>
               <td class="text-right">
-                <div ngbdropdown="" placement="bottom-right" class="dropdown"><a aria-haspopup="true"
-                    class="btn btn-sm btn-icon-only text-light dropdown-toggle" ngbdropdowntoggle=""
-                    aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
-                  <div class="dropdown-menu-right dropdown-menu-arrow dropdown-menu" ngbdropdownmenu=""
-                    x-placement="bottom-right"><a class="dropdown-item" href="javascript:void(0)">Action</a><a
-                      class="dropdown-item" href="javascript:void(0)">Another action</a><a class="dropdown-item"
-                      href="javascript:void(0)">Something else here</a></div>
-                </div>
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item>
+                    <mat-icon>edit</mat-icon>
+                    <span>Editar</span>
+                  </button>
+                  <button mat-menu-item>
+                    <mat-icon>delete</mat-icon>
+                    <span>Borrar</span>
+                  </button>
+                </mat-menu>
               </td>
             </tr>
             <tr>
-              <th scope="row">
-                <div class="media align-items-center"><a class="avatar rounded-circle mr-3"
-                    href="javascript:void(0)"><img alt="Image placeholder" src="assets/img/theme/angular.jpg"></a>
-                  <div class="media-body"><span class="mb-0 text-sm">Angular Now
-                      UI Kit PRO</span></div>
-                </div>
-              </th>
-              <td> $1,800 USD </td>
-              <td><span class="badge badge-dot"><i class="bg-success"></i> completed </span></td>
               <td>
-                <div class="avatar-group"><a class="avatar avatar-sm" data-original-title="Ryan Tompson"
-                    data-toggle="tooltip" href="javascript:void(0)"><img alt="Image placeholder" class="rounded-circle"
-                      src="assets/img/theme/team-1-800x800.jpg"></a><a class="avatar avatar-sm"
-                    data-original-title="Romina Hadid" data-toggle="tooltip" href="javascript:void(0)"><img
-                      alt="Image placeholder" class="rounded-circle" src="assets/img/theme/team-2-800x800.jpg"></a><a
-                    class="avatar avatar-sm" data-original-title="Alexander Smith" data-toggle="tooltip"
-                    href="javascript:void(0)"><img alt="Image placeholder" class="rounded-circle"
-                      src="assets/img/theme/team-3-800x800.jpg"></a><a class="avatar avatar-sm"
-                    data-original-title="Jessica Doe" data-toggle="tooltip" href="javascript:void(0)"><img
-                      alt="Image placeholder" class="rounded-circle" src="assets/img/theme/team-4-800x800.jpg"></a>
-                </div>
+                <mat-checkbox></mat-checkbox>
               </td>
-              <td>
-                <div class="d-flex align-items-center"><span class="mr-2">100%</span>
-                  <div>
-                    <div class="progress">
-                      <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" class="progress-bar bg-success"
-                        role="progressbar" style="width: 100%;"></div>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="text-right">
-                <div ngbdropdown="" placement="bottom-right" class="dropdown"><a aria-haspopup="true"
-                    class="btn btn-sm btn-icon-only text-light dropdown-toggle" ngbdropdowntoggle=""
-                    aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
-                  <div class="dropdown-menu-right dropdown-menu-arrow dropdown-menu" ngbdropdownmenu=""
-                    x-placement="bottom-right"><a class="dropdown-item" href="javascript:void(0)">Action</a><a
-                      class="dropdown-item" href="javascript:void(0)">Another action</a><a class="dropdown-item"
-                      href="javascript:void(0)">Something else here</a></div>
-                </div>
-              </td>
+              <td> Comer frutilla </td>
+              <td> 12/6/2020 a las 1:44:00 hs</td>
+              <td><span class="badge badge-dot mr-4"><i class="bg-warning"></i> pendiente </span></td>
             </tr>
             <tr>
-              <th scope="row">
-                <div class="media align-items-center"><a class="avatar rounded-circle mr-3"
-                    href="javascript:void(0)"><img alt="Image placeholder" src="assets/img/theme/sketch.jpg"></a>
-                  <div class="media-body"><span class="mb-0 text-sm">Black
-                      Dashboard</span></div>
-                </div>
-              </th>
-              <td> $3,150 USD </td>
-              <td><span class="badge badge-dot mr-4"><i class="bg-danger"></i> delayed </span></td>
               <td>
-                <div class="avatar-group"><a class="avatar avatar-sm" data-original-title="Ryan Tompson"
-                    data-toggle="tooltip" href="javascript:void(0)"><img alt="Image placeholder" class="rounded-circle"
-                      src="assets/img/theme/team-1-800x800.jpg"></a><a class="avatar avatar-sm"
-                    data-original-title="Romina Hadid" data-toggle="tooltip" href="javascript:void(0)"><img
-                      alt="Image placeholder" class="rounded-circle" src="assets/img/theme/team-2-800x800.jpg"></a><a
-                    class="avatar avatar-sm" data-original-title="Alexander Smith" data-toggle="tooltip"
-                    href="javascript:void(0)"><img alt="Image placeholder" class="rounded-circle"
-                      src="assets/img/theme/team-3-800x800.jpg"></a><a class="avatar avatar-sm"
-                    data-original-title="Jessica Doe" data-toggle="tooltip" href="javascript:void(0)"><img
-                      alt="Image placeholder" class="rounded-circle" src="assets/img/theme/team-4-800x800.jpg"></a>
-                </div>
+                <mat-checkbox></mat-checkbox>
               </td>
-              <td>
-                <div class="d-flex align-items-center"><span class="mr-2">72%</span>
-                  <div>
-                    <div class="progress">
-                      <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="72" class="progress-bar bg-danger"
-                        role="progressbar" style="width: 72%;"></div>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="text-right">
-                <div ngbdropdown="" placement="top-right" class="dropup"><a aria-haspopup="true"
-                    class="btn btn-sm btn-icon-only text-light dropdown-toggle" ngbdropdowntoggle=""
-                    aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
-                  <div class="dropdown-menu-right dropdown-menu-arrow dropdown-menu" ngbdropdownmenu=""
-                    x-placement="top-right"><a class="dropdown-item" href="javascript:void(0)">Action</a><a
-                      class="dropdown-item" href="javascript:void(0)">Another action</a><a class="dropdown-item"
-                      href="javascript:void(0)">Something else here</a></div>
-                </div>
-              </td>
+              <td> Terminar la tarea </td>
+              <td> 5/12/2020 a las 16:32:00 hs</td>
+              <td><span class="badge badge-dot mr-4"><i class="bg-warning"></i> pendiente </span></td>
             </tr>
             <tr>
-              <th scope="row">
-                <div class="media align-items-center"><a class="avatar rounded-circle mr-3"
-                    href="javascript:void(0)"><img alt="Image placeholder" src="assets/img/theme/react.jpg"></a>
-                  <div class="media-body"><span class="mb-0 text-sm">React
-                      Material Dashboard</span></div>
-                </div>
-              </th>
-              <td> $4,400 USD </td>
-              <td><span class="badge badge-dot"><i class="bg-info"></i> on schedule </span></td>
               <td>
-                <div class="avatar-group"><a class="avatar avatar-sm" data-original-title="Ryan Tompson"
-                    data-toggle="tooltip" href="javascript:void(0)"><img alt="Image placeholder" class="rounded-circle"
-                      src="assets/img/theme/team-1-800x800.jpg"></a><a class="avatar avatar-sm"
-                    data-original-title="Romina Hadid" data-toggle="tooltip" href="javascript:void(0)"><img
-                      alt="Image placeholder" class="rounded-circle" src="assets/img/theme/team-2-800x800.jpg"></a><a
-                    class="avatar avatar-sm" data-original-title="Alexander Smith" data-toggle="tooltip"
-                    href="javascript:void(0)"><img alt="Image placeholder" class="rounded-circle"
-                      src="assets/img/theme/team-3-800x800.jpg"></a><a class="avatar avatar-sm"
-                    data-original-title="Jessica Doe" data-toggle="tooltip" href="javascript:void(0)"><img
-                      alt="Image placeholder" class="rounded-circle" src="assets/img/theme/team-4-800x800.jpg"></a>
-                </div>
+                <mat-checkbox></mat-checkbox>
               </td>
-              <td>
-                <div class="d-flex align-items-center"><span class="mr-2">90%</span>
-                  <div>
-                    <div class="progress">
-                      <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="90" class="progress-bar bg-info"
-                        role="progressbar" style="width: 90%;"></div>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="text-right">
-                <div ngbdropdown="" placement="top-right" class="dropup"><a aria-haspopup="true"
-                    class="btn btn-sm btn-icon-only text-light dropdown-toggle" ngbdropdowntoggle=""
-                    aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
-                  <div class="dropdown-menu-right dropdown-menu-arrow dropdown-menu" ngbdropdownmenu=""
-                    x-placement="top-right"><a class="dropdown-item" href="javascript:void(0)">Action</a><a
-                      class="dropdown-item" href="javascript:void(0)">Another action</a><a class="dropdown-item"
-                      href="javascript:void(0)">Something else here</a></div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">
-                <div class="media align-items-center"><a class="avatar rounded-circle mr-3"
-                    href="javascript:void(0)"><img alt="Image placeholder" src="assets/img/theme/vue.jpg"></a>
-                  <div class="media-body"><span class="mb-0 text-sm">Vue Paper UI
-                      Kit PRO</span></div>
-                </div>
-              </th>
-              <td> $2,200 USD </td>
-              <td><span class="badge badge-dot mr-4"><i class="bg-success"></i> completed </span></td>
-              <td>
-                <div class="avatar-group"><a class="avatar avatar-sm" data-original-title="Ryan Tompson"
-                    data-toggle="tooltip" href="javascript:void(0)"><img alt="Image placeholder" class="rounded-circle"
-                      src="assets/img/theme/team-1-800x800.jpg"></a><a class="avatar avatar-sm"
-                    data-original-title="Romina Hadid" data-toggle="tooltip" href="javascript:void(0)"><img
-                      alt="Image placeholder" class="rounded-circle" src="assets/img/theme/team-2-800x800.jpg"></a><a
-                    class="avatar avatar-sm" data-original-title="Alexander Smith" data-toggle="tooltip"
-                    href="javascript:void(0)"><img alt="Image placeholder" class="rounded-circle"
-                      src="assets/img/theme/team-3-800x800.jpg"></a><a class="avatar avatar-sm"
-                    data-original-title="Jessica Doe" data-toggle="tooltip" href="javascript:void(0)"><img
-                      alt="Image placeholder" class="rounded-circle" src="assets/img/theme/team-4-800x800.jpg"></a>
-                </div>
-              </td>
-              <td>
-                <div class="d-flex align-items-center"><span class="mr-2">100%</span>
-                  <div>
-                    <div class="progress">
-                      <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" class="progress-bar bg-success"
-                        role="progressbar" style="width: 100%;"></div>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="text-right">
-                <div ngbdropdown="" placement="top-right" class="dropup"><a aria-haspopup="true"
-                    class="btn btn-sm btn-icon-only text-light dropdown-toggle" ngbdropdowntoggle=""
-                    aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
-                  <div class="dropdown-menu-right dropdown-menu-arrow dropdown-menu" ngbdropdownmenu=""
-                    x-placement="top-right"><a class="dropdown-item" href="javascript:void(0)">Action</a><a
-                      class="dropdown-item" href="javascript:void(0)">Another action</a><a class="dropdown-item"
-                      href="javascript:void(0)">Something else here</a></div>
-                </div>
-              </td>
+              <td> Estudiar programación </td>
+              <td> 8/12/2020 a las 12:23:00 hs</td>
+              <td><span class="badge badge-dot mr-4"><i class="bg-warning"></i> pendiente </span></td>
             </tr>
           </tbody>
         </table>
-
+        <table class="table align-items-center table-flush">
+          <thead class="thead-light">
+            <th>Completados</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <mat-checkbox></mat-checkbox>
+              </td>
+              <td> Reclamarle al banco los dolares que no me dió </td>
+              <td> 24/6/2020 a las 16:40:00 hs</td>
+              <td><span class="badge badge-dot mr-4"><i class="bg-warning"></i> pendiente </span></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

@@ -19,6 +19,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   imports: [
@@ -26,6 +28,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    MatMenuModule,
     MatButtonModule,
     MatRippleModule,
     MatFormFieldModule,
@@ -33,6 +36,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatSelectModule,
     MatTooltipModule,
     MatDatepickerModule,
+    MatCheckboxModule,
     MatNativeDateModule,
     MatTableModule,
     MatPaginatorModule,
@@ -57,8 +61,10 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatTooltipModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatCheckboxModule,
     MatTableModule,
     MatPaginatorModule,
+    MatMenuModule,
     MatSortModule,
     MatProgressSpinnerModule,
     MatToolbarModule,

@@ -15,7 +15,11 @@ const toDoSchema = new Schema({
   },
   descripcion: {
     type: String
-  }
+  },
+  estado: {
+    type: String,
+    required: true
+  },
 }, 
 {
   timestamps: true

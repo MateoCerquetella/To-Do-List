@@ -4,7 +4,7 @@ const ToDo = mongoose.model('ToDo', toDoSchema);
 
 //Crear ToDo
 exports.create = (req, res) => {
-  if (!req.body.nombre) {
+  if (!req.body.nombre || !req.body.estado) {
     return res.status(400).send({
       message: 'Falta contenido en el cuerpo.'
     });
@@ -14,7 +14,8 @@ exports.create = (req, res) => {
     userId: req.user,
     nombre: req.body.nombre,
     fecha: req.body.fecha,
-    descripcion: req.body.descripcion
+    descripcion: req.body.descripcion,
+    estado: req.body.estado
   }
 
   ToDo.create(newToDo)
