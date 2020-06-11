@@ -1,0 +1,73 @@
+<div class="main-content">
+  <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
+    <div class="container px-4">
+      <a class="navbar-brand pt-0 title-container">
+        <img src="./assets/img/brand/to-do-list.png" class="navbar-brand-img img-logo">
+        <p class="title img-logo">To Do List</p>
+      </a>
+      <button class="navbar-toggler" type="button" (click)="isCollapsed=!isCollapsed"
+         aria-controls="sidenav-collapse-main">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse"  [ngbCollapse]="isCollapsed" id="sidenav-collapse-main">
+        <!-- Collapse header -->
+        <div class="navbar-collapse-header d-md-none">
+          <div class="row">
+            <div class="col-6 collapse-brand" style="padding-left: 60px;">
+              <a class="navbar-brand pt-0 title-container">
+                <img src="./assets/img/brand/to-do-list.png" class="navbar-brand-img img-logo">
+                <p class="title img-logo" style="color: #4f59ea; font-size: 2rem;">To Do List</p>
+              </a>
+            </div>
+            <div class="col-6 collapse-close">
+              <button type="button" class="navbar-toggler" (click)="isCollapsed=!isCollapsed" >
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Navbar items -->
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link nav-link-icon" routerLinkActive="active" [routerLink]="['layout/dashboard']">
+              <i class="ni ni-planet"></i>
+              <span class="nav-link-inner--text">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-icon" routerLinkActive="active" [routerLink]="['inicio/register']">
+              <i class="ni ni-circle-08"></i>
+              <span class="nav-link-inner--text">Registrarse</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
+</div>
+<footer class="py-5">
+  <div class="container">
+    <div class="row align-items-center justify-content-xl-between">
+      <div class="col-xl-6">
+        <div class="copyright text-center text-xl-left text-muted">
+          &copy; 2020 <a href="mailto:mateocerquetella@hotmail.com?Subject=Interesado%20en%20contacto" class="font-weight-bold ml-1" target="_blank">Mateo Cerquetella</a>
+        </div>
+      </div>
+      <div class="col-xl-6">
+        <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+          <li class="nav-item">
+            <a href="https://www.linkedin.com/in/mateocerquetella/" class="nav-link" target="_blank">Sobre mi</a>
+          </li>
+          <li class="nav-item">
+            <a href="https://twitter.com/matucerquetella" class="nav-link" target="_blank">Twitter</a>
+          </li>
+          <li class="nav-item">
+            <a href="https://github.com/MateoCerquetella" class="nav-link" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>

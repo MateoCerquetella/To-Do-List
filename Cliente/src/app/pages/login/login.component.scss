@@ -1,0 +1,24 @@
+.error {
+    margin-top: 1.5rem;
+    color: white;
+    background-color: red;
+    border-radius: 3px;
+    text-align: center;
+  }
+  .dedicado {    
+    color: #000;
+font-size: 19px;
+font-weight: bold;
+font-style: oblique;
+background-color: #e0ff00;
+padding-right: 3px;
+}
+
+.spoiler {
+  opacity:0;
+}
+.spoiler:hover {
+  opacity:1;
+  -webkit-transition: opacity .25s ease-in-out .0s;
+  transition: opacity .25s ease-in-out .0s;
+}
