@@ -4,8 +4,7 @@ import { RouteInfo } from 'src/app/models/routeinfo';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 export const ROUTES: RouteInfo[] = [
-  { path: 'dashboard', title: 'Inicio', action: '', icon: 'ni-tv-2 text-primary', class: '' },
-  { path: 'tablapedidos', title: 'Pedidos', action: '', icon: 'ni-bullet-list-67 text-red', class: '' }
+  { path: 'dashboard', title: 'Inicio', action: '', icon: 'ni-tv-2 text-primary', class: '' }
 ];
 
 @Component({

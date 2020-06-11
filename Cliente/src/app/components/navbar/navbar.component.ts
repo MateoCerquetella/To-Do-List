@@ -18,9 +18,6 @@ export class NavbarComponent implements OnInit {
 
   constructor(location: Location, private router: Router, private auth: AuthService) {
     this.location = location;
-    const nombre = sessionStorage.getItem('Nombre') || '';
-    const apellido = sessionStorage.getItem('Apellido') || '';
-    this.nombreApellido = nombre + ' ' + apellido;
   }
 
   ngOnInit() {
