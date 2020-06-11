@@ -9,7 +9,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -34,7 +33,6 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatSelectModule,
     MatTooltipModule,
     MatDatepickerModule,
-    MatMomentDateModule,
     MatNativeDateModule,
     MatTableModule,
     MatPaginatorModule,
@@ -58,7 +56,6 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatSelectModule,
     MatTooltipModule,
     MatDatepickerModule,
-    MatMomentDateModule,
     MatNativeDateModule,
     MatTableModule,
     MatPaginatorModule,
