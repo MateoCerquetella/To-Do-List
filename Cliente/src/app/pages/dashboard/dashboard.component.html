@@ -99,138 +99,50 @@
     <div class="col-xl-12 mb-5 mb-xl-0">
       <div class="card bg-secondary shadow">
         <div class="card-header bg-white border-0">
-          <h3 class="mb-0">Tareas</h3>
+          <h3 class="mb-0">Nueva Tarea</h3>
           <div class="form-group">
             <form class="p-b-12 m-t-12 containerFlexible" [formGroup]="frmTarea" (ngSubmit)="onSubmit()">
               <input class="form-control form-control-alternative mt-3" (keyup.enter)="onSubmit()"
-                placeholder="Tarea nueva..." formControlName="Tarea" type="text">
+                placeholder="Agregar tarea..." formControlName="Tarea" type="text">
               <button class="btn btn-primary agregar" type="submit"><i class="fa fa-plus"></i></button>
             </form>
           </div>
         </div>
-        <table class="table align-items-center table-flush">
-          <thead class="thead-light">
-            <th>Por Hacer</th>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <mat-checkbox></mat-checkbox>
-              </td>
-              <td> Reclamarle al banco los dolares que no me dió </td>
-              <td> 24/6/2020 a las 16:40:00 hs</td>
-              <td class="text-right">
-                <button mat-icon-button [matMenuTriggerFor]="menu">
-                  <mat-icon>more_vert</mat-icon>
-                </button>
-                <mat-menu #menu="matMenu">
-                  <button mat-menu-item>
-                    <mat-icon>edit</mat-icon>
-                    <span>Editar</span>
-                  </button>
-                  <button mat-menu-item>
-                    <mat-icon>delete</mat-icon>
-                    <span>Borrar</span>
-                  </button>
-                </mat-menu>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-checkbox></mat-checkbox>
-              </td>
-              <td> Comer frutilla </td>
-              <td> 12/6/2020 a las 1:44:00 hs</td><td class="text-right">
-                <button mat-icon-button [matMenuTriggerFor]="menu">
-                  <mat-icon>more_vert</mat-icon>
-                </button>
-                <mat-menu #menu="matMenu">
-                  <button mat-menu-item>
-                    <mat-icon>edit</mat-icon>
-                    <span>Editar</span>
-                  </button>
-                  <button mat-menu-item>
-                    <mat-icon>delete</mat-icon>
-                    <span>Borrar</span>
-                  </button>
-                </mat-menu>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-checkbox></mat-checkbox>
-              </td>
-              <td> Terminar la tarea </td>
-              <td> 5/12/2020 a las 16:32:00 hs</td><td class="text-right">
-                <button mat-icon-button [matMenuTriggerFor]="menu">
-                  <mat-icon>more_vert</mat-icon>
-                </button>
-                <mat-menu #menu="matMenu">
-                  <button mat-menu-item>
-                    <mat-icon>edit</mat-icon>
-                    <span>Editar</span>
-                  </button>
-                  <button mat-menu-item>
-                    <mat-icon>delete</mat-icon>
-                    <span>Borrar</span>
-                  </button>
-                </mat-menu>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-checkbox></mat-checkbox>
-              </td>
-              <td> Estudiar programación </td>
-              <td> 8/12/2020 a las 12:23:00 hs</td><td class="text-right">
-                <button mat-icon-button [matMenuTriggerFor]="menu">
-                  <mat-icon>more_vert</mat-icon>
-                </button>
-                <mat-menu #menu="matMenu">
-                  <button mat-menu-item>
-                    <mat-icon>edit</mat-icon>
-                    <span>Editar</span>
-                  </button>
-                  <button mat-menu-item>
-                    <mat-icon>delete</mat-icon>
-                    <span>Borrar</span>
-                  </button>
-                </mat-menu>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <table class="table align-items-center table-flush">
-          <thead class="thead-light">
-            <th>Completados</th>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <mat-checkbox></mat-checkbox>
-              </td>
-              <td> Estudiar programación </td>
-              <td> 8/12/2020 a las 12:23:00 hs</td><td class="text-right">
-                <button mat-icon-button [matMenuTriggerFor]="menu">
-                  <mat-icon>more_vert</mat-icon>
-                </button>
-                <mat-menu #menu="matMenu">
-                  <button mat-menu-item>
-                    <mat-icon>edit</mat-icon>
-                    <span>Editar</span>
-                  </button>
-                  <button mat-menu-item>
-                    <mat-icon>delete</mat-icon>
-                    <span>Borrar</span>
-                  </button>
-                </mat-menu>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <!-- Aca van los NO completados -->
+        <div class="por-hacer">
+          <h3 class="ml-3">Por hacer</h3>
+          <mat-accordion>
+            <mat-expansion-panel *ngFor="let todo of porHacerTareas" expanded="false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <mat-checkbox></mat-checkbox>
+                </mat-panel-title>
+                <mat-panel-description>
+                  {{todo.nombre}}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+      
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+        <!-- Aca van los completados -->
+        <div class="completadas mt-4">
+          <h3 class="ml-3">Completadas</h3>
+          <mat-accordion>
+            <mat-expansion-panel *ngFor="let todo of completadasTareas" expanded="false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <mat-checkbox></mat-checkbox>
+                </mat-panel-title>
+                <mat-panel-description>
+                  {{todo.nombre}}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+      
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div>
 </div>

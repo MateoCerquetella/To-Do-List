@@ -11,6 +11,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSortModule } from '@angular/material/sort';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -19,8 +20,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   imports: [
@@ -35,6 +36,7 @@ import {MatMenuModule} from '@angular/material/menu';
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    MatExpansionModule,
     MatDatepickerModule,
     MatCheckboxModule,
     MatNativeDateModule,
@@ -61,6 +63,7 @@ import {MatMenuModule} from '@angular/material/menu';
     MatTooltipModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatExpansionModule,
     MatCheckboxModule,
     MatTableModule,
     MatPaginatorModule,
