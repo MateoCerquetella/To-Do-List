@@ -14,6 +14,7 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { HandlerService } from './services/handler/handler.service';
 import { AuthInterceptor } from './services/auth/auth.interceptor.service';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { ToDoService } from './services/todo/todo.service';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
   ],
   providers: [
     AuthService,
+    ToDoService,
     AuthGuardService,
     JwtHelperService,
     HandlerService,

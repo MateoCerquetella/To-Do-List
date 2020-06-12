@@ -101,16 +101,16 @@
         <div class="card-header bg-white border-0">
           <h3 class="mb-0">Tareas</h3>
           <div class="form-group">
-            <input class="form-control form-control-alternative mt-3" placeholder="Tarea nueva..."
-              type="text"></div>
+            <form class="p-b-12 m-t-12 containerFlexible" [formGroup]="frmTarea" (ngSubmit)="onSubmit()">
+              <input class="form-control form-control-alternative mt-3" (keyup.enter)="onSubmit()"
+                placeholder="Tarea nueva..." formControlName="Tarea" type="text">
+              <button class="btn btn-primary agregar" type="submit"><i class="fa fa-plus"></i></button>
+            </form>
+          </div>
         </div>
         <table class="table align-items-center table-flush">
           <thead class="thead-light">
             <th>Por Hacer</th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
           </thead>
           <tbody>
             <tr>
@@ -140,24 +140,63 @@
                 <mat-checkbox></mat-checkbox>
               </td>
               <td> Comer frutilla </td>
-              <td> 12/6/2020 a las 1:44:00 hs</td>
-              <td><span class="badge badge-dot mr-4"><i class="bg-warning"></i> pendiente </span></td>
+              <td> 12/6/2020 a las 1:44:00 hs</td><td class="text-right">
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item>
+                    <mat-icon>edit</mat-icon>
+                    <span>Editar</span>
+                  </button>
+                  <button mat-menu-item>
+                    <mat-icon>delete</mat-icon>
+                    <span>Borrar</span>
+                  </button>
+                </mat-menu>
+              </td>
             </tr>
             <tr>
               <td>
                 <mat-checkbox></mat-checkbox>
               </td>
               <td> Terminar la tarea </td>
-              <td> 5/12/2020 a las 16:32:00 hs</td>
-              <td><span class="badge badge-dot mr-4"><i class="bg-warning"></i> pendiente </span></td>
+              <td> 5/12/2020 a las 16:32:00 hs</td><td class="text-right">
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item>
+                    <mat-icon>edit</mat-icon>
+                    <span>Editar</span>
+                  </button>
+                  <button mat-menu-item>
+                    <mat-icon>delete</mat-icon>
+                    <span>Borrar</span>
+                  </button>
+                </mat-menu>
+              </td>
             </tr>
             <tr>
               <td>
                 <mat-checkbox></mat-checkbox>
               </td>
               <td> Estudiar programación </td>
-              <td> 8/12/2020 a las 12:23:00 hs</td>
-              <td><span class="badge badge-dot mr-4"><i class="bg-warning"></i> pendiente </span></td>
+              <td> 8/12/2020 a las 12:23:00 hs</td><td class="text-right">
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item>
+                    <mat-icon>edit</mat-icon>
+                    <span>Editar</span>
+                  </button>
+                  <button mat-menu-item>
+                    <mat-icon>delete</mat-icon>
+                    <span>Borrar</span>
+                  </button>
+                </mat-menu>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -170,9 +209,22 @@
               <td>
                 <mat-checkbox></mat-checkbox>
               </td>
-              <td> Reclamarle al banco los dolares que no me dió </td>
-              <td> 24/6/2020 a las 16:40:00 hs</td>
-              <td><span class="badge badge-dot mr-4"><i class="bg-warning"></i> pendiente </span></td>
+              <td> Estudiar programación </td>
+              <td> 8/12/2020 a las 12:23:00 hs</td><td class="text-right">
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item>
+                    <mat-icon>edit</mat-icon>
+                    <span>Editar</span>
+                  </button>
+                  <button mat-menu-item>
+                    <mat-icon>delete</mat-icon>
+                    <span>Borrar</span>
+                  </button>
+                </mat-menu>
+              </td>
             </tr>
           </tbody>
         </table>
