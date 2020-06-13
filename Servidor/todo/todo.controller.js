@@ -44,7 +44,7 @@ exports.read = (req, res) => {
 
 //Actualizar un ToDo
 exports.update = (req, res) => {
-  if (!req.body.nombre || !req.body.completado) {
+  if (!req.body.nombre || req.body.completado === undefined) {
     return res.status(400).send({
       message: 'Falta contenido en el cuerpo.'
     });

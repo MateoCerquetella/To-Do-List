@@ -113,42 +113,40 @@
         <div class="por-hacer">
           <h3 class="ml-3">Por hacer</h3>
           <div class="table-responsive">
-            <!-- Projects table -->
-            <mat-table #table [dataSource]="dataSource">
-
-          
-              <!-- Name Column -->
-              <ng-container matColumnDef="nombre">
-                <mat-header-cell *matHeaderCellDef> nombre </mat-header-cell>
-                <mat-cell *matCellDef="let todo">
-                  <mat-form-field floatLabel="never">
-                    <input matInput placeholder="nombre" [value]="todo.nombre" [(ngModel)]="todo.nombre">
-                  </mat-form-field>
-                </mat-cell>
-              </ng-container>
-          
-          
-              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-            </mat-table>
-            
+            <mat-accordion displayMode="flat" multi class="mat-table">
+              <mat-expansion-panel *ngFor="let item of noCompletadasTareas; let i=index">
+                <mat-expansion-panel-header class="mat-row">
+                  <mat-checkbox [(ngModel)]="item.completado" [checked]="item.completado"                                                                           
+                  name="{{i}}-name" color="primary"
+                    (click)="$event.stopPropagation(); onComplete(item)"></mat-checkbox>
+                  <span class="mat-cell" style="margin-left: 10px;">{{item.nombre}}</span>
+                </mat-expansion-panel-header>
+                <div class="descripcion">
+                  Descripcion: {{item.descripcion}}
+                  {{item | json}}
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
           </div>
           <!-- Aca van las tareas completadas -->
           <div class="completadas mt-4">
             <h3 class="ml-3">Completadas</h3>
-            <mat-accordion>
-              <mat-expansion-panel *ngFor="let todo of completadasTareas" expanded="false">
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                    <mat-checkbox></mat-checkbox>
-                  </mat-panel-title>
-                  <mat-panel-description>
-                    {{todo.nombre}}
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-
-              </mat-expansion-panel>
-            </mat-accordion>
+            <div class="table-responsive">
+              <mat-accordion displayMode="flat" multi class="mat-table">
+                <mat-expansion-panel *ngFor="let item of completadasTareas; let i=index">
+                  <mat-expansion-panel-header class="mat-row">
+                    <mat-checkbox [(ngModel)]="item.completado" [checked]="item.completado"                                                                           
+                    name="{{i}}-name" color="primary"
+                      (click)="$event.stopPropagation(); onComplete(item)"></mat-checkbox>
+                    <span class="mat-cell" style="margin-left: 10px;">{{item.nombre}}</span>
+                  </mat-expansion-panel-header>
+                  <div class="descripcion">
+                    Descripcion: {{item.descripcion}}
+                    {{item | json}}
+                  </div>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </div>
           </div>
         </div>
       </div>

@@ -16,6 +16,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -32,6 +33,7 @@ import { SatPopoverModule } from '@ncstate/sat-popover';
     ReactiveFormsModule,
     SatPopoverModule,
     MatMenuModule,
+    MatRadioModule,
     MatButtonModule,
     MatRippleModule,
     MatFormFieldModule,
@@ -76,6 +78,7 @@ import { SatPopoverModule } from '@ncstate/sat-popover';
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
+    MatRadioModule,
     MatListModule,
     MatDialogModule,
     MatAutocompleteModule
