@@ -16,8 +16,8 @@ const toDoSchema = new Schema({
   descripcion: {
     type: String
   },
-  estado: {
-    type: String,
+  completado: {
+    type: Boolean,
     required: true
   },
 }, 

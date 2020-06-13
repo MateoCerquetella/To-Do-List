@@ -3,5 +3,5 @@ export interface ToDoI {
     nombre: String;
     fecha?: Date;
     descripcion?: String;
-    estado: String;
+    completado: Boolean;
 }

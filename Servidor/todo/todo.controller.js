@@ -4,7 +4,7 @@ const ToDo = mongoose.model('ToDo', toDoSchema);
 
 //Crear ToDo
 exports.create = (req, res) => {
-  if (!req.body.nombre || !req.body.estado) {
+  if (!req.body.nombre || req.body.completado === undefined) {
     return res.status(400).send({
       message: 'Falta contenido en el cuerpo.'
     });
@@ -15,7 +15,7 @@ exports.create = (req, res) => {
     nombre: req.body.nombre,
     fecha: req.body.fecha,
     descripcion: req.body.descripcion,
-    estado: req.body.estado
+    completado: req.body.completado
   }
 
   ToDo.create(newToDo)
@@ -44,7 +44,7 @@ exports.read = (req, res) => {
 
 //Actualizar un ToDo
 exports.update = (req, res) => {
-  if (!req.body.nombre || !req.body.estado) {
+  if (!req.body.nombre || !req.body.completado) {
     return res.status(400).send({
       message: 'Falta contenido en el cuerpo.'
     });

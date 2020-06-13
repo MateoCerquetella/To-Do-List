@@ -22,6 +22,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
+import { SatPopoverModule } from '@ncstate/sat-popover';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { MatMenuModule } from '@angular/material/menu';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    SatPopoverModule,
     MatMenuModule,
     MatButtonModule,
     MatRippleModule,
@@ -60,6 +62,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    SatPopoverModule,
     MatTooltipModule,
     MatDatepickerModule,
     MatNativeDateModule,
