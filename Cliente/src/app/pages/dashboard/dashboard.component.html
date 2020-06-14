@@ -1,4 +1,4 @@
-<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+<div class="header bg-gradient-primary pb-8 pt-5 pt-md-7">
   <div class="container-fluid">
     <div class="header-body">
       <!-- Card stats -->
@@ -9,7 +9,7 @@
               <div class="row">
                 <div class="col">
                   <h5 class="card-title text-uppercase text-muted mb-0">Tareas totales</h5>
-                  <span class="h2 font-weight-bold mb-0"></span>
+                  <span class="h2 font-weight-bold mb-0">{{ tareasTotales }}</span>
                 </div>
                 <div class="col-auto">
                   <div class="icon icon-shape bg-primary text-white rounded-circle shadow">
@@ -40,8 +40,7 @@
               </div>
               <p class="mt-3 mb-0 text-muted text-sm">
                 <span class="text-muted mr-2"><i class="far fa-calendar"></i></span>
-                <span class="text-nowrap">Para la fecha de: </span>
-                <span class="h4 font-weight-bolder"></span>
+                <span class="text-nowrap">Desde la fecha de creación</span>
               </p>
             </div>
           </div>
@@ -52,18 +51,17 @@
               <div class="row">
                 <div class="col">
                   <h5 class="card-title text-uppercase text-muted mb-0">Tareas por hacer</h5>
-                  <span class="h2 font-weight-bold mb-0"></span>
+                  <span class="h2 font-weight-bold mb-0">{{ tareasPorHacer }}</span>
                 </div>
                 <div class="col-auto">
                   <div class="icon icon-shape bg-success text-white rounded-circle shadow">
-                    <i class="fas fa-dollar-sign"></i>
+                    <i class="fa fa-arrow-right"></i>
                   </div>
                 </div>
               </div>
               <p class="mt-3 mb-0 text-muted text-sm">
                 <span class="text-muted mr-2"><i class="far fa-calendar"></i></span>
-                <span class="text-nowrap">Total de peso: </span>
-                <span class="h5 font-weight-bolder"></span>
+                <span class="text-nowrap">Desde la fecha de creación</span>
               </p>
             </div>
           </div>
@@ -74,18 +72,17 @@
               <div class="row">
                 <div class="col">
                   <h5 class="card-title text-uppercase text-muted mb-0">Tareas completadas</h5>
-                  <span class="h2 font-weight-bold mb-0"></span>
+                  <span class="h2 font-weight-bold mb-0">{{ tareasCompletadas }}</span>
                 </div>
                 <div class="col-auto">
                   <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                    <i class="far fa-address-book"></i>
+                    <i class="fa fa-tasks"></i>
                   </div>
                 </div>
               </div>
               <p class="mt-3 mb-0 text-muted text-sm">
                 <span class="text-muted mr-2"><i class="far fa-calendar"></i></span>
-                <span class="text-nowrap">Total de: </span>
-                <span class="h4 font-weight-bolder"></span>
+                <span class="text-nowrap">Desde la fecha de creación</span>
               </p>
             </div>
           </div>
@@ -116,9 +113,8 @@
             <mat-accordion displayMode="flat" multi class="mat-table">
               <mat-expansion-panel *ngFor="let item of noCompletadasTareas; let i=index">
                 <mat-expansion-panel-header class="mat-row">
-                  <mat-checkbox [(ngModel)]="item.completado" [checked]="item.completado"                                                                           
-                  name="{{i}}-name" color="primary"
-                    (click)="$event.stopPropagation(); onComplete(item)"></mat-checkbox>
+                  <mat-checkbox [(ngModel)]="item.completado" [checked]="item.completado" name="{{i}}-name"
+                    color="primary" (click)="$event.stopPropagation(); onComplete(item)"></mat-checkbox>
                   <span class="mat-cell" style="margin-left: 10px;">{{item.nombre}}</span>
                 </mat-expansion-panel-header>
                 <div class="descripcion">
@@ -135,9 +131,8 @@
               <mat-accordion displayMode="flat" multi class="mat-table">
                 <mat-expansion-panel *ngFor="let item of completadasTareas; let i=index">
                   <mat-expansion-panel-header class="mat-row">
-                    <mat-checkbox [(ngModel)]="item.completado" [checked]="item.completado"                                                                           
-                    name="{{i}}-name" color="primary"
-                      (click)="$event.stopPropagation(); onComplete(item)"></mat-checkbox>
+                    <mat-checkbox [(ngModel)]="item.completado" [checked]="item.completado" name="{{i}}-name"
+                      color="primary" (click)="$event.stopPropagation(); onComplete(item)"></mat-checkbox>
                     <span class="mat-cell" style="margin-left: 10px;">{{item.nombre}}</span>
                   </mat-expansion-panel-header>
                   <div class="descripcion">

@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder, Validators, Form } from '@angular/forms';
 import { ToDoI } from 'src/app/models/todo';
 import { take } from 'rxjs/operators';
 import swal from 'sweetalert2';
-import { MatTableDataSource } from '@angular/material/table';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -17,7 +17,10 @@ export class DashboardComponent implements OnInit {
   tareaModel: ToDoI;
   noCompletadasTareas: ToDoI[] = [];
   completadasTareas: ToDoI[] = [];
-  dataSource = new MatTableDataSource();
+  tareasTotales: number;
+  tareasPorHacer: number;
+  tareasCompletadas: number;
+  proximaTarea: Date;
 
   constructor(private todoService: ToDoService, private formBuilder: FormBuilder) {
     this.getToDo();
@@ -36,6 +39,9 @@ export class DashboardComponent implements OnInit {
               this.noCompletadasTareas.push(tarea);
             }
           });
+          this.tareasTotales = this.contarTareas(res);
+          this.tareasPorHacer = this.contarTareas(this.noCompletadasTareas);
+          this.tareasCompletadas = this.contarTareas(this.completadasTareas);
         },
         (err) => {
           if (err) {
@@ -50,14 +56,14 @@ export class DashboardComponent implements OnInit {
       );
   }
 
+  contarTareas(res: ToDoI[]): number {
+    return res.length;
+  }
+
   ngOnInit() {
     this.frmTarea = this.formBuilder.group({
       Tarea: ['', [Validators.required]]
     });
-  }
-
-  get f() {
-    return this.frmTarea.controls;
   }
 
   onComplete(item: ToDoI) {
@@ -79,7 +85,6 @@ export class DashboardComponent implements OnInit {
                 this.completadasTareas.splice(index, 1);
                 res.completado = false;
                 this.noCompletadasTareas.push(res);
-
               }
             });
           } else {
@@ -91,6 +96,9 @@ export class DashboardComponent implements OnInit {
               }
             });
           }
+          this.tareasPorHacer = this.noCompletadasTareas.length; // Contador de tareas NO completadas
+          this.tareasCompletadas = this.completadasTareas.length; // Contador de tareas COMPLETADAS
+          this.tareasTotales = this.tareasCompletadas + this.tareasPorHacer; // Contador de TODAS las tareas
         },
         (err) => {
           if (err) {
@@ -122,6 +130,8 @@ export class DashboardComponent implements OnInit {
       .subscribe(
         (res) => {
           this.noCompletadasTareas.push(res);
+          this.tareasTotales++;
+          this.tareasPorHacer++;
           // Pongo el formulario en 0
           this.frmTarea.reset();
         },
