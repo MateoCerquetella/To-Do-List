@@ -38,8 +38,6 @@ app.listen(app.get('port'), () => {
 
 // Error handler
 app.use(function (err, req, res, next) {
-  console.error(err.message);
-  console.error(err.stack);
   if (!err.statusCode) err.statusCode = 500;
   res.status(err.statusCode).send(err.message);
 });

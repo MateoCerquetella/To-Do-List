@@ -55,7 +55,6 @@ exports.update = (req, res) => {
       return res.status(200).send(data);
     })
     .catch((err) => {
-      console.log(err);
       return res.status(500).send({
         message: 'Se ha producido un error al querer editar la tarea'
       });
