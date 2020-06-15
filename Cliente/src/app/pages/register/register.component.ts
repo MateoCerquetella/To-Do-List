@@ -67,6 +67,7 @@ export class RegisterComponent implements OnInit {
         this.errorMessage = 'Usuario y/o email en uso';
         this.frmRegister.setValue({
           username: this.frmRegister.get('username').value,
+          email: this.frmRegister.get('email').value,
           password: '', // Pongo la password vacia
         });
       }
