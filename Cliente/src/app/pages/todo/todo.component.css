@@ -1,0 +1,43 @@
+.btn-actualizar{
+    padding-left: 79%;
+    margin-bottom: -30px;
+    margin-top: 10px;
+}
+
+.peso{
+    margin-top: 2.5px;
+}
+
+::ng-deep .mat-form-field {
+    display: inline !important;
+    position: relative !important;
+    text-align: left !important;
+    font-family: Open Sans, sans-serif !important;
+}
+
+::ng-deep .cdk-overlay-container {
+z-index: 1000000;
+overflow: auto;
+}
+
+::ng-deep div[class*='cdk-overlay-']  {
+    overflow: auto;
+}
+
+::ng-deep .cdk-overlay-container .cdk-overlay-backdrop{
+    margin-bottom: -30%;
+    position: fixed;
+}
+
+.fecha {
+    margin-top: -22px;
+    padding-top: 26px;
+    margin-bottom: -6px;
+}
+
+::ng-deep .mat-datepicker-toggle-default-icon {
+    font-size: 1.6rem;
+    margin-left: -4px;
+    margin-bottom: 5px;
+    
+}

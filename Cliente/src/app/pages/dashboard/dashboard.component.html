@@ -111,11 +111,27 @@
           <h3 class="ml-3">Por hacer</h3>
           <div class="table-responsive">
             <mat-accordion displayMode="flat" multi class="mat-table">
-              <mat-expansion-panel *ngFor="let item of noCompletadasTareas; let i=index">
-                <mat-expansion-panel-header class="mat-row">
+              <mat-expansion-panel *ngFor="let item of noCompletadasTareas; let i=index" hideToggle>
+                <mat-expansion-panel-header class="mat-row ">
+                  <!-- Checkbox -->
                   <mat-checkbox [(ngModel)]="item.completado" [checked]="item.completado" name="{{i}}-name"
                     color="primary" (click)="$event.stopPropagation(); onComplete(item)"></mat-checkbox>
-                  <span class="mat-cell" style="margin-left: 10px;">{{item.nombre}}</span>
+                  <!-- Nombre de la tarea -->
+                  <span class="mat-cell " style="margin-left: 10px;">{{item.nombre}}</span>
+                  <!-- Boton de acciones -->
+                  <button mat-icon-button class="acciones" (click)="$event.stopPropagation();" [matMenuTriggerFor]="menu">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="onEdit(item)">
+                      <mat-icon>edit</mat-icon>
+                      <span>Editar</span>
+                    </button>
+                    <button mat-menu-item (click)="onDelete(item)">
+                      <mat-icon>delete</mat-icon>
+                      <span>Borrar</span>
+                    </button>
+                  </mat-menu>
                 </mat-expansion-panel-header>
                 <div class="descripcion">
                   Descripcion: {{item.descripcion}}
@@ -129,11 +145,27 @@
             <h3 class="ml-3">Completadas</h3>
             <div class="table-responsive">
               <mat-accordion displayMode="flat" multi class="mat-table">
-                <mat-expansion-panel *ngFor="let item of completadasTareas; let i=index">
+                <mat-expansion-panel *ngFor="let item of completadasTareas; let i=index" hideToggle>
                   <mat-expansion-panel-header class="mat-row">
+                    <!-- Checkbox -->
                     <mat-checkbox [(ngModel)]="item.completado" [checked]="item.completado" name="{{i}}-name"
                       color="primary" (click)="$event.stopPropagation(); onComplete(item)"></mat-checkbox>
+                    <!-- Nombre de la tarea -->
                     <span class="mat-cell" style="margin-left: 10px;">{{item.nombre}}</span>
+                    <!-- Boton de acciones -->
+                    <button mat-icon-button class="acciones" (click)="$event.stopPropagation();" [matMenuTriggerFor]="menu">
+                      <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                      <button mat-menu-item (click)="onEdit(item)">
+                        <mat-icon>edit</mat-icon>
+                        <span>Editar</span>
+                      </button>
+                      <button mat-menu-item (click)="onDelete(item)">
+                        <mat-icon>delete</mat-icon>
+                        <span>Borrar</span>
+                      </button>
+                    </mat-menu>
                   </mat-expansion-panel-header>
                   <div class="descripcion">
                     Descripcion: {{item.descripcion}}

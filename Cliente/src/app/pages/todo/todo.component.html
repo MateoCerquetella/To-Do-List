@@ -1,0 +1,20 @@
+<div class="card-body">
+    <form class="p-b-12 m-t-12" [formGroup]="frmTarea" (ngSubmit)="doEdit()">
+            <p>
+                <mat-form-field appearance="legacy">
+                    <mat-label>Tarea</mat-label>
+                    <input matInput formControlName="Tarea">
+                    <mat-error *ngIf="f.Tarea.invalid">La tarea no puede estar vacia</mat-error>
+                </mat-form-field>
+            </p>
+            <mat-form-field>
+                <mat-label>Descripcion</mat-label>
+                <textarea style="resize: none;" matInput formControlName="Descripcion" #Descripcion
+                    maxlength="256"></textarea>
+                <mat-hint align="end">{{Descripcion.value.length}} / 256</mat-hint>
+            </mat-form-field>
+            <div mat-dialog-actions class="btn-actualizar">
+                <button class="btn btn-primary" type="submit">Editar tarea</button>
+            </div>
+    </form>
+</div>

@@ -50,7 +50,6 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('layout/dashboard');
       },
       (err) => {
-        console.log(err);
         this.error = true;
         this.errorMessage = 'Usuario y/o contraseña incorrecto';
         this.frmLogin.setValue({

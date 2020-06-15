@@ -1,4 +1,4 @@
-import { NgModule, ErrorHandler, isDevMode } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -23,7 +23,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
-import { SatPopoverModule } from '@ncstate/sat-popover';
 
 @NgModule({
   imports: [
@@ -31,7 +30,6 @@ import { SatPopoverModule } from '@ncstate/sat-popover';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    SatPopoverModule,
     MatMenuModule,
     MatRadioModule,
     MatButtonModule,
@@ -64,7 +62,6 @@ import { SatPopoverModule } from '@ncstate/sat-popover';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    SatPopoverModule,
     MatTooltipModule,
     MatDatepickerModule,
     MatNativeDateModule,

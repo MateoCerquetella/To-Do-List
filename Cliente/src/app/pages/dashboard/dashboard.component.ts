@@ -4,6 +4,8 @@ import { FormGroup, FormBuilder, Validators, Form } from '@angular/forms';
 import { ToDoI } from 'src/app/models/todo';
 import { take } from 'rxjs/operators';
 import swal from 'sweetalert2';
+import { ToDoComponent } from '../todo/todo.component';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -22,7 +24,7 @@ export class DashboardComponent implements OnInit {
   tareasCompletadas: number;
   proximaTarea: Date;
 
-  constructor(private todoService: ToDoService, private formBuilder: FormBuilder) {
+  constructor(private todoService: ToDoService, private formBuilder: FormBuilder, public dialog: MatDialog) {
     this.getToDo();
   }
 
@@ -39,9 +41,7 @@ export class DashboardComponent implements OnInit {
               this.noCompletadasTareas.push(tarea);
             }
           });
-          this.tareasTotales = this.contarTareas(res);
-          this.tareasPorHacer = this.contarTareas(this.noCompletadasTareas);
-          this.tareasCompletadas = this.contarTareas(this.completadasTareas);
+          this.contarTodasLasTareas();
         },
         (err) => {
           if (err) {
@@ -56,14 +56,57 @@ export class DashboardComponent implements OnInit {
       );
   }
 
-  contarTareas(res: ToDoI[]): number {
-    return res.length;
+  contarTodasLasTareas() {
+    this.tareasPorHacer = this.noCompletadasTareas.length; // Contador de tareas NO completadas
+    this.tareasCompletadas = this.completadasTareas.length; // Contador de tareas COMPLETADAS
+    this.tareasTotales = this.tareasCompletadas + this.tareasPorHacer; // Contador de TODAS las tareas
   }
 
   ngOnInit() {
     this.frmTarea = this.formBuilder.group({
       Tarea: ['', [Validators.required]]
     });
+  }
+
+  onEdit(item: ToDoI) {
+    const dialogRef = this.dialog.open(ToDoComponent, {
+      width: '700px',
+      data: item
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === undefined) {
+        return;
+      } else {
+        if (!result.data.completado) { // Tarea no completada
+          this.noCompletadasTareas.forEach((tarea, index) => {
+            if (tarea._id === result.data._id) {
+              this.noCompletadasTareas.splice(index, 1);
+              this.noCompletadasTareas.unshift(result.data); // Lo mando como primer array
+            }
+          });
+        } else {
+          this.completadasTareas.forEach((tarea, index) => {
+            if (tarea._id === result.data._id) {
+              this.completadasTareas.splice(index, 1);
+              this.completadasTareas.unshift(result.data);
+            }
+          });
+        }
+        this.contarTodasLasTareas();
+        swal.fire({
+          title: 'Actualizacion exitosa',
+          text: 'Se ha cambiado la tarea con exito',
+          icon: 'success',
+          confirmButtonText: 'Ok',
+        });
+      }
+
+    });
+  }
+
+  onDelete(item: ToDoI) {
+
   }
 
   onComplete(item: ToDoI) {
@@ -96,9 +139,7 @@ export class DashboardComponent implements OnInit {
               }
             });
           }
-          this.tareasPorHacer = this.noCompletadasTareas.length; // Contador de tareas NO completadas
-          this.tareasCompletadas = this.completadasTareas.length; // Contador de tareas COMPLETADAS
-          this.tareasTotales = this.tareasCompletadas + this.tareasPorHacer; // Contador de TODAS las tareas
+          this.contarTodasLasTareas();
         },
         (err) => {
           if (err) {
