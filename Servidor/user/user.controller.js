@@ -41,7 +41,6 @@ exports.register = (req, res) => {
       return res.status(200).send(dataUser);
     })
     .catch((err) => {
-      console.error(err);
       if (err && err.code === 11000) {
         return res.status(409).send({ message: 'Ya existe el usuario o mail' });
       }
@@ -94,7 +93,6 @@ exports.login = (req, res) => {
       }
     })
     .catch((err) => {
-      console.error(err);
       return res.status(500).send({
         message: 'Se ha producido un error al querer iniciar sesión'
       });
