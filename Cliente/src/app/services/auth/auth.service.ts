@@ -18,7 +18,7 @@ export class AuthService {
     private httpClient: HttpClient,
     public jwtHelper: JwtHelperService,
     public errorHandler: HandlerService) {
-    if (!isDevMode()) { this.SERVER = 'ponerURL'; }
+    if (!isDevMode()) { this.SERVER = 'https://to-do-list-coderhouse.herokuapp.com'; }
    }
 
   // ************************************************ */
