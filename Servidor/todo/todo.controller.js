@@ -64,14 +64,14 @@ exports.update = (req, res) => {
 
 //Borrar un ToDo
 exports.delete = (req, res) => {
-  ToDo.findOneAndDelete({$and:[{ _id: req.params.id },{ userId: req.user }]})
+  ToDo.findOneAndDelete({ $and: [{ _id: req.params.id }, { userId: req.user }] })
     .then((data) => {
-       if (data === null) {
+      if (data === null) {
         return res.status(409).send({
           message: 'La tarea no pertenece a el usuario logeado'
         });
-       }
-       return res.status(200).send({ message: 'Se ha eliminado la tarea con éxito'});
+      }
+      return res.status(200).send(data);
     })
     .catch((err) => {
       return res.status(500).send({

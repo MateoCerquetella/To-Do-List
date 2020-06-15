@@ -29,10 +29,12 @@ export class ToDoComponent implements OnInit {
   ngOnInit() {
     this.frmTarea = this.formBuilder.group({
       Tarea: ['', [Validators.required]],
-      Descripcion: ['']
+      Descripcion: [''],
+      Fecha: ['', [Validators.required]],
     });
     this.frmTarea.get('Tarea').setValue(this.localData.nombre);
     this.frmTarea.get('Descripcion').setValue(this.localData.descripcion);
+    this.frmTarea.get('Fecha').setValue(this.localData.fecha);
 
   }
 
@@ -48,6 +50,7 @@ export class ToDoComponent implements OnInit {
       _id: this.localData._id,
       nombre: this.frmTarea.get('Tarea').value,
       descripcion: this.frmTarea.get('Descripcion').value,
+      fecha: this.frmTarea.get('Fecha').value,
       completado: this.localData.completado
     };
     this.todoService

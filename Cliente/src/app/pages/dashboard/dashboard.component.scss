@@ -25,6 +25,18 @@
     flex: 1;
 }
 
+.completado {
+  margin-left: 10px; 
+  text-decoration:line-through;
+  color: #767678;
+}
+
+.fecha { 
+  color: #767678;
+  font-size: 12px;
+  padding-left: 5px;
+}
+
 .acciones {
   position: absolute;
 left: 92%;

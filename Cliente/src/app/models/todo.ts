@@ -4,4 +4,6 @@ export interface ToDoI {
     fecha?: Date;
     descripcion?: String;
     completado: Boolean;
+    createdAt?: Date;
+    updatedAt?: Date;
 }

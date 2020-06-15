@@ -7,6 +7,14 @@
                     <mat-error *ngIf="f.Tarea.invalid">La tarea no puede estar vacia</mat-error>
                 </mat-form-field>
             </p>
+            <p>
+                <mat-form-field>
+                    <mat-label>Fecha</mat-label>
+                    <input matInput [matDatepicker]="Fecha" class="form-control fecha" formControlName="Fecha">
+                    <mat-datepicker-toggle matSuffix [for]="Fecha"></mat-datepicker-toggle>
+                    <mat-datepicker #Fecha></mat-datepicker>
+                </mat-form-field>
+            </p>
             <mat-form-field>
                 <mat-label>Descripcion</mat-label>
                 <textarea style="resize: none;" matInput formControlName="Descripcion" #Descripcion

@@ -23,12 +23,15 @@ export class DashboardComponent implements OnInit {
   tareasPorHacer: number;
   tareasCompletadas: number;
   proximaTarea: Date;
+  proximaTareaNombre: any;
 
   constructor(private todoService: ToDoService, private formBuilder: FormBuilder, public dialog: MatDialog) {
     this.getToDo();
   }
 
   getToDo() {
+  let ultimaTarea: ToDoI;
+
     this.todoService
       .getAllToDo()
       .pipe(take(1))
@@ -41,7 +44,13 @@ export class DashboardComponent implements OnInit {
               this.noCompletadasTareas.push(tarea);
             }
           });
+          this.ordenarPorUltimoUpdated(this.completadasTareas);
+          this.ordenarPorUltimoUpdated(this.noCompletadasTareas);
           this.contarTodasLasTareas();
+          // Seteo los valores de la ultima tarea
+          ultimaTarea = this.buscarProximaTarea(res);
+          this.proximaTarea = ultimaTarea.fecha;
+          this.proximaTareaNombre = `${ultimaTarea.nombre.substring(0, 15)}...`;
         },
         (err) => {
           if (err) {
@@ -54,6 +63,30 @@ export class DashboardComponent implements OnInit {
           }
         }
       );
+  }
+
+  buscarProximaTarea(item: ToDoI[]): ToDoI {
+    let nuevoArr = item.filter((tarea) => {
+      // Tareas que tengan fecha y no esten completadas
+      if (tarea.fecha && !tarea.completado) {
+        return tarea.fecha;
+      }
+    });
+    // Ordeno el que tenga la fecha minima
+    nuevoArr = this.ordenarPorUltimoUpdated(nuevoArr);
+
+    return nuevoArr[0];
+  }
+
+  ordenarPorUltimoUpdated(item: ToDoI[]): ToDoI[] {
+    item.sort((todo1, todo2) => {
+      const fechaTarea1 = new Date(todo1.fecha);
+      const fechaTarea2 = new Date(todo2.fecha);
+      // Orden decendente por campo updatedAt
+      return fechaTarea1.getTime() - fechaTarea2.getTime();
+    });
+
+    return item;
   }
 
   contarTodasLasTareas() {
@@ -71,7 +104,7 @@ export class DashboardComponent implements OnInit {
   onEdit(item: ToDoI) {
     const dialogRef = this.dialog.open(ToDoComponent, {
       width: '700px',
-      data: item
+      data: item // Envio el item de la row solicitada
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -106,7 +139,48 @@ export class DashboardComponent implements OnInit {
   }
 
   onDelete(item: ToDoI) {
-
+    this.tareaModel = {
+      _id: item._id,
+      nombre: item.nombre,
+      completado: item.completado
+    };
+    this.todoService
+      .deleteToDo(this.tareaModel)
+      .pipe(take(1))
+      .subscribe(
+        (res: ToDoI) => {
+          if (this.tareaModel.completado) {
+            this.completadasTareas.forEach((tarea, index) => {
+              if (tarea._id === res._id) {
+                this.completadasTareas.splice(index, 1);
+              }
+            });
+          } else {
+            this.noCompletadasTareas.forEach((tarea, index) => {
+              if (tarea._id === res._id) {
+                this.noCompletadasTareas.splice(index, 1);
+              }
+            });
+          }
+          this.contarTodasLasTareas();
+          swal.fire({
+            title: 'Borrado exitoso',
+            text: 'Se ha eliminado la tarea con exito',
+            icon: 'success',
+            confirmButtonText: 'Ok',
+          });
+        },
+        (err) => {
+          if (err) {
+            swal.fire({
+              title: 'Error',
+              text: 'Se ha producido un error al querer borrar la tarea',
+              icon: 'error',
+              confirmButtonText: 'Ok',
+            });
+          }
+        }
+      );
   }
 
   onComplete(item: ToDoI) {
@@ -127,7 +201,7 @@ export class DashboardComponent implements OnInit {
               if (tarea._id === res._id) {
                 this.completadasTareas.splice(index, 1);
                 res.completado = false;
-                this.noCompletadasTareas.push(res);
+                this.noCompletadasTareas.unshift(res);
               }
             });
           } else {
@@ -135,7 +209,7 @@ export class DashboardComponent implements OnInit {
               if (tarea._id === res._id) {
                 this.noCompletadasTareas.splice(index, 1);
                 res.completado = true;
-                this.completadasTareas.push(res);
+                this.completadasTareas.unshift(res);
               }
             });
           }
@@ -170,7 +244,7 @@ export class DashboardComponent implements OnInit {
       .pipe(take(1))
       .subscribe(
         (res) => {
-          this.noCompletadasTareas.push(res);
+          this.noCompletadasTareas.unshift(res);
           this.tareasTotales++;
           this.tareasPorHacer++;
           // Pongo el formulario en 0

@@ -30,7 +30,7 @@
               <div class="row">
                 <div class="col">
                   <h5 class="card-title text-uppercase text-muted mb-0">Proxima tarea</h5>
-                  <span class="h2 font-weight-bold mb-0"></span>
+                  <span class="h2 font-weight-bold mb-0">{{ proximaTarea | date:"dd/MM/yyyy" }}</span>
                 </div>
                 <div class="col-auto">
                   <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -40,7 +40,8 @@
               </div>
               <p class="mt-3 mb-0 text-muted text-sm">
                 <span class="text-muted mr-2"><i class="far fa-calendar"></i></span>
-                <span class="text-nowrap">Desde la fecha de creación</span>
+                <span class="text-nowrap"></span>
+                <span class="h4 font-weight-bolder">{{ proximaTareaNombre }}</span>
               </p>
             </div>
           </div>
@@ -117,9 +118,14 @@
                   <mat-checkbox [(ngModel)]="item.completado" [checked]="item.completado" name="{{i}}-name"
                     color="primary" (click)="$event.stopPropagation(); onComplete(item)"></mat-checkbox>
                   <!-- Nombre de la tarea -->
-                  <span class="mat-cell " style="margin-left: 10px;">{{item.nombre}}</span>
+                  <span class="mat-cell" style="margin-left: 10px;">{{item.nombre}} </span>
+                  <!-- Fecha de la tarea -->
+                  <div *ngIf="item.fecha">
+                    <span class="mat-cell fecha"> {{ item.fecha | date:"dd/MM/yyyy" }} </span>
+                  </div>
                   <!-- Boton de acciones -->
-                  <button mat-icon-button class="acciones" (click)="$event.stopPropagation();" [matMenuTriggerFor]="menu">
+                  <button mat-icon-button class="acciones" (click)="$event.stopPropagation();"
+                    [matMenuTriggerFor]="menu">
                     <mat-icon>more_vert</mat-icon>
                   </button>
                   <mat-menu #menu="matMenu">
@@ -134,8 +140,9 @@
                   </mat-menu>
                 </mat-expansion-panel-header>
                 <div class="descripcion">
-                  Descripcion: {{item.descripcion}}
-                  {{item | json}}
+                  <div *ngIf="item.descripcion">
+                    <p> Descripcion: {{item.descripcion}} </p>
+                  </div>
                 </div>
               </mat-expansion-panel>
             </mat-accordion>
@@ -151,9 +158,14 @@
                     <mat-checkbox [(ngModel)]="item.completado" [checked]="item.completado" name="{{i}}-name"
                       color="primary" (click)="$event.stopPropagation(); onComplete(item)"></mat-checkbox>
                     <!-- Nombre de la tarea -->
-                    <span class="mat-cell" style="margin-left: 10px;">{{item.nombre}}</span>
+                    <span class="mat-cell completado">{{item.nombre}}</span>
+                    <!-- Fecha de la tarea -->
+                    <div *ngIf="item.fecha">
+                      <span class="mat-cell fecha"> {{ item.fecha | date:"dd/MM/yyyy" }} </span>
+                    </div>
                     <!-- Boton de acciones -->
-                    <button mat-icon-button class="acciones" (click)="$event.stopPropagation();" [matMenuTriggerFor]="menu">
+                    <button mat-icon-button class="acciones" (click)="$event.stopPropagation();"
+                      [matMenuTriggerFor]="menu">
                       <mat-icon>more_vert</mat-icon>
                     </button>
                     <mat-menu #menu="matMenu">
@@ -168,8 +180,9 @@
                     </mat-menu>
                   </mat-expansion-panel-header>
                   <div class="descripcion">
-                    Descripcion: {{item.descripcion}}
-                    {{item | json}}
+                    <div *ngIf="item.descripcion">
+                      <p> Descripcion: {{item.descripcion}} </p>
+                    </div>
                   </div>
                 </mat-expansion-panel>
               </mat-accordion>
