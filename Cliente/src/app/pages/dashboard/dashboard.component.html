@@ -101,7 +101,7 @@
           <div class="form-group">
             <!-- Agregar nueva tarea -->
             <form class="p-b-12 m-t-12 containerFlexible" [formGroup]="frmTarea" (ngSubmit)="onSubmit()">
-              <input class="form-control form-control-alternative mt-3" (keyup.enter)="onSubmit()"
+              <input class="form-control form-control-alternative mt-3"
                 placeholder="Agregar tarea..." formControlName="Tarea" type="text">
               <button class="btn btn-primary agregar" type="submit"><i class="fa fa-plus"></i></button>
             </form>
