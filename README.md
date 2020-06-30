@@ -1,7 +1,8 @@
 # To-Do-List
-Full-Stack JavaScript Usando MongoDB, Express, AngularJS, y Node
+Aplicacion creada con MEAN Stack(MongoDB, ExpressJS, AngularJS, NodeJS)
 
-Sistema de tareas, CRUD basico de tareas con fechas y descripcion inclusive.
+Pequeña web de demostracion con funcionalidad de un TO DO List; Donde podrás ver, crear, editar o borrar una tarea. Sistema de logeo con JWT y hasheo de contraseñas, hosteado por la nube en Heroku.
+
 Para hacer una instalacion completa use estos comandos:
 
 * rm -rf node_modules/ && rm -rf package-lock.json && npm install
